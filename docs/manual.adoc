@@ -1,0 +1,11 @@
+== Summary
+
+Sample project with solutions to some specific cases.
+
+=== Commands
+
+$: npx create-react-app my-awesome-react-app --template typescript
+
+$: npm install react-router-dom react-icons
+
+$: PORT=8080 npm run start
