@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import VideoPlayer from './components/VideoPlayer';
 
-function App() {
+const App: React.FC = () => {
+  const [videoUrl, setVideoUrl] = useState<string>('');
+
+  const handleVideoSelect = (url: string) => {
+    setVideoUrl(url);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Video Streaming Platform</h1>
       </header>
+      <div className="video-container">
+        {videoUrl ? (
+          <VideoPlayer url={videoUrl} />
+        ) : (
+          <p>Select a video to play</p>
+        )}
+      </div>
+      <div className="video-list">
+        <h2>Available Videos</h2>
+        <ul>
+          <li onClick={() => handleVideoSelect('https://www.example.com/video1.mp4')}>Video 1</li>
+          <li onClick={() => handleVideoSelect('https://www.example.com/video2.mp4')}>Video 2</li>
+        </ul>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
+
